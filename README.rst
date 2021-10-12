@@ -1,4 +1,5 @@
-#tox-pyenv-install
+tox-pyenv-install
+=================
 
 Plugin that allows `tox <https://tox.readthedocs.org/en/latest/>`__ to
 `find python
@@ -43,9 +44,11 @@ available in the ``PATH`` environment variable.
 Use ``tox -v[v]`` to increase verbosity and to show log output of
 ``tox-env-plugin``.
 
-##Allowed python version string formats ``tox-pyenv-install`` can parse
-python version strings in the formats that are used by ``pyenv``.\\
-Those formats include:
+Allowed python version string formats
+-------------------------------------
+
+``tox-pyenv-install`` can parse python version strings in the formats
+that are used by ``pyenv``.\\ Those formats include:
 
 -  exact notions of a python version like ``3.10.0``
 -  dev versions like ``3.11-dev``
@@ -68,20 +71,28 @@ In case of specifying a minor version (using ``tox``\ s or the shorthand
 format) the ``tox-pyenv-install`` plugin resolves the latest available
 or installed patch version as described in the intro above.
 
-##Configuration options and CLI arguments CLI arguments have precedence
-over options defined in the ``tox.ini`` ``[testenv]`` section.
+Configuration options and CLI arguments
+---------------------------------------
 
-###Auto install python versions The auto installation of python versions
-is disabled by default.\\ Use the ``tox.ini`` ``[testenv]`` section
-option or the cli argument to enable it.\\ **Important note**: When
-installing versions, pyenv builds python versions from source. Therefore
-`build tools aswell as commonly used libraries or headers for building
-python are required, as stated in the pyenv
+CLI arguments have precedence over options defined in the ``tox.ini``
+``[testenv]`` section.
+
+Auto install python versions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The auto installation of python versions is disabled by default.\\ Use
+the ``tox.ini`` ``[testenv]`` section option or the cli argument to
+enable it.\\ **Important note**: When installing versions, pyenv builds
+python versions from source. Therefore `build tools aswell as commonly
+used libraries or headers for building python are required, as stated in
+the pyenv
 wiki <https://github.com/pyenv/pyenv/wiki#suggested-build-environment>`__.
 
-####Auto install python versions using testenv section option Option:
-``tox_pyenv_install_auto_install``\\ Default: ``False``\\ Example
-``tox.ini``:
+Auto install python versions using testenv section option
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Option: ``tox_pyenv_install_auto_install``\\ Default: ``False``\\
+Example ``tox.ini``:
 
 ::
 
@@ -99,21 +110,25 @@ wiki <https://github.com/pyenv/pyenv/wiki#suggested-build-environment>`__.
    commands =
        pytest
 
-####Auto install python versions using CLI argument Argument:
-``--tox-pyenv-install-auto-install``\\ Default: not set\\ Example
-``tox`` call: ``tox --tox-pyenv-install-auto-install``
+Auto install python versions using CLI argument
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-###Always install latest patch version for a minor version
+Argument: ``--tox-pyenv-install-auto-install``\\ Default: not set\\
+Example ``tox`` call: ``tox --tox-pyenv-install-auto-install``
+
+Always install latest patch version for a minor version
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The auto installation of python versions installs the latest patch
 version (like ``3.9.10``) of a minor version (like ``3.9``) by
 default.\\ Use the ``tox.ini`` ``[testenv]`` section option or the cli
 argument to disable it.
 
-####Always install latest patch version for a minor version using
-testenv section option Option:
-``tox_pyenv_install_auto_install_always_latest_patch``\\ Default:
-``True``\\ Depends: ``tox_pyenv_install_auto_install`` or
+Always install latest patch version for a minor version using testenv section option
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Option: ``tox_pyenv_install_auto_install_always_latest_patch``\\
+Default: ``True``\\ Depends: ``tox_pyenv_install_auto_install`` or
 ``--tox-pyenv-install-auto-install``\\ Example ``tox.ini``:
 
 ::
@@ -132,24 +147,28 @@ testenv section option Option:
    commands =
        pytest
 
-####Always install latest patch version for a minor version using CLI
-argument Argument:
-``--tox-pyenv-install-auto-install-always-latest-patch``\\ Depends:
-``--tox-pyenv-install-auto-install`` or
+Always install latest patch version for a minor version using CLI argument
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Argument: ``--tox-pyenv-install-auto-install-always-latest-patch``\\
+Depends: ``--tox-pyenv-install-auto-install`` or
 ``tox_pyenv_install_auto_install`` in ``tox.ini``\\ Default: set\\
 Example ``tox`` call:
 ``tox --tox-pyenv-install-auto-install --tox-pyenv-install-auto-install-always-latest-patch``
 
-###Force tox using tox-pyenv-install for python executable resolution
+Force tox using tox-pyenv-install for python executable resolution
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The plugin allows tox to resolve the searched python executables in case
 ``tox-pyenv-install`` can't find or install the requested version.\\ Use
 the ``tox.ini`` ``[testenv]`` section option or the cli argument to
 disable fallback to ``tox``\ s resolve strategy.
 
-###Force tox using tox-pyenv-install for python executable resolution
-using testenv section option Option: ``tox_pyenv_install_no_fallback``\\
-Default: ``False``\\ Example ``tox.ini``:
+Force tox using tox-pyenv-install for python executable resolution using testenv section option
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Option: ``tox_pyenv_install_no_fallback``\\ Default: ``False``\\ Example
+``tox.ini``:
 
 ::
 
@@ -166,10 +185,11 @@ Default: ``False``\\ Example ``tox.ini``:
    commands =
        pytest
 
-###Force tox using tox-pyenv-install for python executable resolution
-using CLI argument Argument: ``--tox-pyenv-install-no-fallback``\\
-Default: not set\\ Example ``tox`` call:
-``tox --tox-pyenv-install-no-fallback``
+Force tox using tox-pyenv-install for python executable resolution using CLI argument
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Argument: ``--tox-pyenv-install-no-fallback``\\ Default: not set\\
+Example ``tox`` call: ``tox --tox-pyenv-install-no-fallback``
 
 Full example tox configuration
 ------------------------------
@@ -209,7 +229,9 @@ Full example tox configuration
    commands =
        python -m aenum.test
 
-#Based on ```tox-pyenv`` <https://pypi.python.org/pypi/tox-pyenv>`__
+Based on ```tox-pyenv`` <https://pypi.python.org/pypi/tox-pyenv>`__
+===================================================================
+
 This plugin is a fork of
 ```tox-pyenv`` <https://pypi.python.org/pypi/tox-pyenv>`__ and modifies
 and extends it.\\ The original feature to locate python executables
