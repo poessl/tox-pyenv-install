@@ -9,16 +9,16 @@ exact or the latest patch of a python version using
 ```pyenv install`` <https://github.com/pyenv/pyenv/blob/master/COMMANDS.md#pyenv-install>`__.
 
 TL;DR: see `full ``tox.ini``
-example <#full_example_tox_configuration>`__ to enable.
+example <#full-example-tox-configuration>`__ to enable.
 
 Intro
 -----
 
 The automatic installation of requested versions can be enabled using
 the tox ``[testenv]`` section configuration option
-```tox_pyenv_install_auto_install`` <#auto_install_python_versions_using_testenv_section_option>`__
+```tox_pyenv_install_auto_install`` <#auto-install-python-versions-using-testenv-section-option>`__
 or the cli flag
-```--tox-pyenv-install-auto-install`` <#auto_install_python_versions_using_cli_argument>`__.
+```--tox-pyenv-install-auto-install`` <#auto-install-python-versions-using-cli-argument>`__.
 
 To resolve the latest installable patch version of a minor python
 version like ``3.5`` the install candidates of
@@ -28,9 +28,9 @@ of a minor version (like ``3.5.10`` for searched python minor version
 ``3.5``) the latest (but earlier) already installed patch version (e.g.
 ``3.5.9``) can be used by using the tox ``[testenv]`` section
 configuration option
-```tox_pyenv_install_auto_install_always_latest_patch`` <#always_install_latest_patch_version_for_a_minor_version_using_testenv_section_option>`__
+```tox_pyenv_install_auto_install_always_latest_patch`` <#always-install-latest-patch-version-for-a-minor-version-using-testenv-section-option>`__
 or the cli flag
-```--tox-pyenv-install-auto-install-always-latest-patch`` <#always_install_latest_patch_version_for_a_minor_version_using_cli_argument>`__.
+```--tox-pyenv-install-auto-install-always-latest-patch`` <#always-install-latest-patch-version-for-a-minor-version-using-cli-argument>`__.
 
 To search installed python versions the plugin searches in the
 ``versions`` directory of the pyenv root folder as stated using
