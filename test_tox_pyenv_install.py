@@ -9,7 +9,7 @@ import unittest
 
 import mock
 
-import tox_pyenv
+import tox_pyenv_install
 
 try:
     unicode
@@ -39,12 +39,12 @@ class TestToxPyenvNoPyenv(unittest.TestCase):
             self.fail('Unexpected call to Popen')
             # return self.popen_patcher.temp_original(*args, **kw)
         self.popen_patcher = mock.patch.object(
-            tox_pyenv.subprocess, 'Popen', autospec=True,
+            tox_pyenv_install.subprocess, 'Popen', autospec=True,
             side_effect=_mock_popen_func,
         )
         self.popen_patcher.start()
         self.warning_patcher = mock.patch.object(
-            tox_pyenv.LOG, 'warning', autospec=True,
+            tox_pyenv_install.LOG, 'warning', autospec=True,
         )
         self.warning_patcher.start()
 
@@ -54,7 +54,7 @@ class TestToxPyenvNoPyenv(unittest.TestCase):
 
     def test_logs_if_no_pyenv_binary(self):
         mock_test_env_config = MockTestenvConfig('*TEST*')
-        tox_pyenv.tox_get_python_executable(mock_test_env_config)
+        tox_pyenv_install.tox_get_python_executable(mock_test_env_config)
         expected_popen = [
             mock.call(
                 [mock.ANY, 'which', '*TEST*'],
@@ -63,14 +63,14 @@ class TestToxPyenvNoPyenv(unittest.TestCase):
             )
         ]
         self.assertEqual(
-            tox_pyenv.subprocess.Popen.call_args_list,
+            tox_pyenv_install.subprocess.Popen.call_args_list,
             expected_popen
         )
         expected_warn = [
             mock.call("pyenv doesn't seem to be installed, you "
                       "probably don't want this plugin installed either.")
         ]
-        self.assertEqual(tox_pyenv.LOG.warning.call_args_list, expected_warn)
+        self.assertEqual(tox_pyenv_install.LOG.warning.call_args_list, expected_warn)
 
 
 class TestThings(unittest.TestCase):
@@ -87,14 +87,14 @@ class TestThings(unittest.TestCase):
         if platform.python_implementation() == 'PyPy':
             actual_list = [str(_).strip() for _ in sys.pypy_version_info[:3]]
             expected_string = expected_string.split('-')[1].strip(' "\'')
-            print('\nExpected version for this tox env: PyPy %s'
+            print('\nExpected version_string for this tox env: PyPy %s'
                   % expected_string)
-            print('Actual version for this tox env: PyPy %s'
+            print('Actual version_string for this tox env: PyPy %s'
                   % '.'.join(actual_list))
         else:
-            print('\nExpected version for this tox env: Python %s'
+            print('\nExpected version_string for this tox env: Python %s'
                   % expected_string)
-            print('Actual version for this tox env: Python %s'
+            print('Actual version_string for this tox env: Python %s'
                   % platform.python_version())
             actual_list = list(platform.python_version_tuple())
         expected_list = expected_string.split('.')

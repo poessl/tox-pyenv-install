@@ -7,7 +7,7 @@ import sys
 
 
 here = os.path.dirname(os.path.realpath(__file__))
-with open(os.path.join(here, 'tox_pyenv.py'), 'r') as abt:
+with open(os.path.join(here, 'tox_pyenv_install.py'), 'r') as abt:
     marker, about, abt = '# __about__', {}, abt.read()
     assert abt.count('# __about__') == 2
     abt = abt[abt.index(marker):abt.rindex(marker)]
@@ -33,7 +33,7 @@ with open(os.path.join(here, 'README.rst')) as rdme:
 
 ENTRY_POINTS = {
     'tox': [
-        'pyenv = tox_pyenv',
+        'pyenv = tox_pyenv_install',
     ]
 }
 
@@ -60,6 +60,11 @@ CLASSIFIERS = [
     'Programming Language :: Python :: 3.3',
     'Programming Language :: Python :: 3.4',
     'Programming Language :: Python :: 3.5',
+    'Programming Language :: Python :: 3.6',
+    'Programming Language :: Python :: 3.7',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
     'Programming Language :: Python :: Implementation :: CPython',
     'Programming Language :: Python :: Implementation :: PyPy',
 ]
@@ -77,9 +82,9 @@ package_attributes = {
     'long_description': LONG_DESCRIPTION,
     'name': about['__title__'],
     'tests_require': TESTS_REQUIRE,
-    'py_modules': ['tox_pyenv'],
+    'py_modules': ['tox_pyenv_install'],
     'url': about['__url__'],
-    'version': about['__version__'],
+    'version_string': about['__version__'],
 }
 
 setup(**package_attributes)
