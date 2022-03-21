@@ -678,6 +678,7 @@ def _setup_auto_install(parser):
     )
     tox_pyenv_install_group.add_argument(
         '--tox-pyenv-install-auto-install', '-I',
+        action='store_true',
         dest=cli_dest,
         help=halp
     )
