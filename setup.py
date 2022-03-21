@@ -77,7 +77,8 @@ package_attributes = {
     'description': about['__summary__'],
     'entry_points': ENTRY_POINTS,
     'install_requires': INSTALL_REQUIRES,
-    'keywords': ' '.join(about['__keywords__']),
+    # This is a temporary hack because I'm not sure what encoding to use to decode when a bytes object is found in about['__keywords__'].
+    'keywords': ' '.join(kw for kw in about['__keywords__'] if type(kw) is not bytes),
     'license': about['__license__'],
     'long_description': LONG_DESCRIPTION,
     'name': about['__title__'],
